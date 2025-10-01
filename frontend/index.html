@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoMatch - Tu Vehículo Ideal</title>
+    <script>
+      // Detectar y aplicar el tema antes de que React cargue
+      (function() {
+        try {
+          // Verificar preferencia del sistema
+          const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          const isDark = darkModeMediaQuery.matches;
+          console.log('Sistema en modo oscuro:', isDark);
+          console.log('Aplicando clase dark:', isDark);
+
+          // Aplicar o remover clase dark inmediatamente
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            console.log('Clase dark añadida al HTML');
+          } else {
+            document.documentElement.classList.remove('dark');
+            console.log('Clase dark removida del HTML');
+          }
+
+          // Verificar que se aplicó
+          console.log('Clases en HTML:', document.documentElement.className);
+        } catch (e) {
+          console.error('Error detectando tema:', e);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
